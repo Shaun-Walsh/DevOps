@@ -3,9 +3,13 @@ import webbrowser
 import time
 from datetime import datetime
 import os
-from create import create_instance
+import create
+import read
 
-new_instances = create_instance()
+new_instances = create.create_instance()
 
 instance = new_instances[0]
 print("Instance ID: in main", instance.id)
+
+token = read.getToken()
+print("Token: in main", token)
