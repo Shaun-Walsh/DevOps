@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import boto3
 import webbrowser
 import time
@@ -6,10 +8,18 @@ import os
 import create
 import read
 
-new_instances = create.create_instance()
+# consistent resource naming
+resource_name = f"{create.random_id()}-swalsh"
 
-instance = new_instances[0]
-print("Instance ID: in main", instance.id)
+print (f"Creating resources with resource name: {resource_name}")
 
-token = read.getToken()
-print("Token: in main", token)
+# sg = create.create_security_group_with_rules(name=resource_name)
+# instance = create.create_instance(name=resource_name, security_group_id=sg)
+# print(f"Instance ID: {instance.id}")
+# print("To see Cloudwatch Metrics for this instance visit this URL:")
+# print(create.cloudwatch_url(instance.id))
+
+bucket = create.create_bucket_with_hosting(name=resource_name)
+print(f"Bucket name: {bucket}")
+
+print(create.copy_image_to_bucket(bucket_name=bucket,image_url="http://devops.setudemo.net/logo.jpg"))
