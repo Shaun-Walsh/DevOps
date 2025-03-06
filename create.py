@@ -1,6 +1,5 @@
 import time
 import json
-import read
 import boto3
 import random
 import string
