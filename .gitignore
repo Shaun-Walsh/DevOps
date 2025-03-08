@@ -1,1 +1,5 @@
 *.pem
+swalsh-websites.txt
+__pycache__/
+error.html
+index.html
